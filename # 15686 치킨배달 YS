@@ -1,0 +1,56 @@
+from itertools import combinations
+
+def M_consider_chicken(chicken_tuple, M):
+  return list(combinations(chicken_tuple, M))
+
+def cal_each_house_distance(house_row, house_col, chickens):
+  house_distance = []
+  for chicken_row, chicken_col in chickens:
+    distance = abs(house_row-chicken_row) + abs(house_col - chicken_col)
+    house_distance.append(distance)
+  if house_distance:
+    return min(house_distance)
+  else:
+    return 0
+
+def cal_distance(house_tuple, chicken_tuple):
+  chicken_distances = []
+  chicken_distance = 0
+  for house_row, house_col in house_tuple:
+    chicken_distance += cal_each_house_distance(house_row, house_col, chicken_tuple)
+  chicken_distances.append(chicken_distance)
+  return chicken_distances
+
+
+def get_positions(array, N):
+  chicken_positions = []
+  house_positions = []
+  for i in range(N):
+    if 1 in array[i]:
+      house_col = filter(lambda x: city_lines[i][x] == 1, range(N))
+      for col in house_col:
+        house_index = (i, col)
+        house_positions.append(house_index)
+    if 2 in array[i]:
+      chicken_col = filter(lambda x: city_lines[i][x] == 2, range(N))
+      for col in chicken_col:
+        chicken_index = (i, col)
+        chicken_positions.append(chicken_index)
+  return chicken_positions, house_positions
+
+line_num, max_chicken_num = map(int, input().split())
+
+city_lines = []
+for i in range(line_num):
+  city_lines.append(list(map(int, input().split())))
+
+
+chicken_positions, house_positions = get_positions(city_lines, line_num)
+chicken_M_positions = M_consider_chicken(chicken_positions, max_chicken_num)
+
+
+city_chicken_distances = []
+for chicken in chicken_M_positions:
+  city_chicken_distance = cal_distance(house_positions, chicken)
+  city_chicken_distances.append(city_chicken_distance)
+print(min(city_chicken_distances)[0])
