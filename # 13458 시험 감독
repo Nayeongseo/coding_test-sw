@@ -1,0 +1,23 @@
+import math
+
+def cal_room_inspector(people_num, general_inspector, deputy_inspector):
+  rest_people = people_num - general_inspector
+  if rest_people <= 0:
+    return 1
+  else:
+    deputy_people = math.ceil(rest_people/deputy_inspector) + 1
+    return deputy_people
+
+def cal_rooms_inspectors(rooms, general_inspector, deputy_inspector):
+  inspect_list = 0
+  for room in rooms:
+    inspect_list += cal_room_inspector(room, general_inspector, deputy_inspector)
+  return inspect_list
+
+room_num = int(input())
+room_people_list = list(map(int, input().split()))
+general_inspector, deputy_inspector = map(int, input().split())
+
+
+all_room_inspect = cal_rooms_inspectors(room_people_list, general_inspector, deputy_inspector)
+print(all_room_inspect)
