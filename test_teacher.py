@@ -43,3 +43,6 @@ sub_teacher_array = get_s_teacher(left_array, s_teacher)
 
 all_teacher = num_m_teacher + sum(sub_teacher_array)
 print(all_teacher)
+
+
+# 나영서
