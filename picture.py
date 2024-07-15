@@ -1,5 +1,6 @@
 import sys
-sys.setrecursionlimit(10000)
+sys.setrecursionlimit(1000000)
+input = sys.stdin.readline
 
 n, m = map(int, input().split())
 array = []
@@ -37,7 +38,7 @@ def dfs(l, c):
     # if 0<= nnl <= n and 0<=nnc<=m and visit[nnl][nnc] == 0 and array[nnl][nnc] == 1:
     #   visit[nnl][nnc] = i_size
     #   dfs(nnl, nnc)
-    visit[nnl][nnc] = i_size
+    #visit[nnl][nnc] = i_size
     dfs(nnl, nnc)
     
   
