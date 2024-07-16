@@ -6,3 +6,5 @@
 
 [![Solved.ac
 프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=nays0407)](https://solved.ac/nays0407)
+
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=min2000jae)](https://solved.ac/min2000jae/)
